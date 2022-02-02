@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "i": "^0.3.7",
+    "init": "^0.1.2",
+    "mongoose": "^6.1.10",
+    "nodemon": "^2.0.15"
+  },
+  "name": "NBA",
+  "version": "1.0.0",
+  "description": "NBA is an API endpoints app for creating, viewing, searching, updating and deleting a new note",
+  "main": "app.js",
+  "repository": "https://github.com/olatocode/NBA_Nota-Bene-App.git",
+  "author": "Tobi Awosola",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon app.js"
+  }
+}
