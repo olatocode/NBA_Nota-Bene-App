@@ -4,7 +4,7 @@
     "express": "^4.17.2",
     "i": "^0.3.7",
     "init": "^0.1.2",
-    "mongoose": "^6.1.10",
+    "mongoose": "6.1.8",
     "nodemon": "^2.0.15"
   },
   "name": "NBA",
@@ -14,8 +14,7 @@
   "repository": "https://github.com/olatocode/NBA_Nota-Bene-App.git",
   "author": "Tobi Awosola",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon ./src/app.js"
   }
 }
