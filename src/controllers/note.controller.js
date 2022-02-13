@@ -1,6 +1,8 @@
 const Note = require("../models/note.model");
 
-// create new note
+// write if statement for deleteNote, updateNote and note by title.
+
+// To create a new note using 'title' & 'description'
 exports.createNote = async (req, res, next) => {
   try {
     const { title, description } = req.body;
@@ -10,20 +12,19 @@ exports.createNote = async (req, res, next) => {
     });
     await newNote.save();
 
-    return res.status(201).json({
+    return res.status(200).json({
       success: true,
       newNote,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       success: false,
-      message: "please fill the required fields",
+      message: error.message,
     });
   }
 };
 
-// Delete a note
+// To delete a note by using unique 'id' value
 exports.deleteNote = async (req, res, next) => {
   try {
     const id = req.params;
@@ -34,15 +35,15 @@ exports.deleteNote = async (req, res, next) => {
       note,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       success: false,
-      message: "Please Check details and try again",
+      message: error.message,
     });
   }
 };
 
-// update note
+// To update a note by referencing the 'id' value,
+// with 'title' and 'description'.
 
 exports.updateNote = async (req, res, next) => {
   try {
@@ -55,15 +56,14 @@ exports.updateNote = async (req, res, next) => {
       noteUpdate,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       success: false,
-      message: "Server Error, try again!",
+      message: error.message,
     });
   }
 };
 
-// view all notes
+// To show all created note in the database
 exports.fetchNotes = async (req, res, next) => {
   try {
     const note = await Note.find();
@@ -74,12 +74,12 @@ exports.fetchNotes = async (req, res, next) => {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "An Error Occurred, try again!",
+      message: error.message,
     });
   }
 };
 
-// search note by title
+// To search any note created with value of the 'title'
 
 exports.fetchTitleNote = async (req, res, next) => {
   try {
@@ -91,10 +91,9 @@ exports.fetchTitleNote = async (req, res, next) => {
       findNote,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       success: false,
-      message: "please try again",
+      message: error.message,
     });
   }
 };

@@ -7,9 +7,10 @@ app.use(express.json());
 dotenv.config();
 const port = process.env.PORT;
 
+// Database Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    await mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -18,11 +19,12 @@ const connectDB = async () => {
     console.log(`Database Not Connected`);
   }
 };
-
 connectDB();
 
-app.use("/api/v1", noteRouter);
+// The app path in string
+// app.use("/api/v1", noteRouter);
 
+// Server Connection
 app.listen(port, () => {
   console.log(`NBA is listening on port ${port}...`);
 });

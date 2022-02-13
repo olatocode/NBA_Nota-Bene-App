@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// To create a new schema for Note.
 const noteSchema = new Schema({
   title: {
     type: String,
@@ -15,5 +16,6 @@ const noteSchema = new Schema({
   Date: { type: Date, default: Date.now },
 
 });
-const noteModel = mongoose.model("Note", noteSchema);
+// To convert noteSchema into a model of 'Note'.
+const noteModel = mongoose.model("Note", noteSchema); 
 module.exports = noteModel;

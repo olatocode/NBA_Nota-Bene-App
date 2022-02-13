@@ -2,6 +2,7 @@ const express = require("express");
 const Note = require("../controllers/note.controller");
 const router = express.Router();
 
+// route paths are in string e.g "/new-note".
 router.post("/new-note", Note.createNote);
 
 router.delete("/remove-note/:_id", Note.deleteNote);
