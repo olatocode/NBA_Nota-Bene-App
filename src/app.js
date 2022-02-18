@@ -1,30 +1,19 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const noteRouter = require("./routes/note.route");
 const dotenv = require("dotenv");
 const app = express();
 app.use(express.json());
 dotenv.config();
-const port = process.env.PORT;
+const { PORT } = process.env;
 
-// Database Connection
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Database is connected");
-  } catch (error) {
-    console.log(`Database Not Connected`);
-  }
-};
-connectDB();
+// extracting database connection from DB folder
+const DB = require("./DB/connectDB");
+DB.connectDB();
 
-// The app path in string
-// app.use("/api/v1", noteRouter);
+// The base endpoint url is '/api/v1'
+app.use("/api/v1", noteRouter);
 
 // Server Connection
-app.listen(port, () => {
-  console.log(`NBA is listening on port ${port}...`);
+app.listen(PORT, () => {
+  console.log(`NBA is listening on port ${PORT}...`);
 });

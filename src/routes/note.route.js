@@ -2,15 +2,20 @@ const express = require("express");
 const Note = require("../controllers/note.controller");
 const router = express.Router();
 
-// route paths are in string e.g "/new-note".
-router.post("/new-note", Note.createNote);
+// The router paths extracted from note controller as follows:
+// /newNote
+// /removeNote/: _id
+// /editNote/:_id
+// /viewNote
+// /getTitleNote/:title
+router.post("/newNote", Note.createNote);
 
-router.delete("/remove-note/:_id", Note.deleteNote);
+router.delete("/removeNote/:_id", Note.deleteNote);
 
-router.patch("/edit-note/:_id", Note.updateNote);
+router.patch("/editNote/:_id", Note.updateNote);
 
-router.get("/view-note", Note.fetchNotes);
+router.get("/viewNote", Note.fetchNotes);
 
-router.get("/title-note/:title", Note.fetchTitleNote);
+router.get("/getTitleNote/:title", Note.fetchTitleNote);
 
 module.exports = router;

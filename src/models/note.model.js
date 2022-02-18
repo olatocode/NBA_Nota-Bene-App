@@ -15,7 +15,12 @@ const noteSchema = new Schema({
   },
   Date: { type: Date, default: Date.now },
 
-});
+},
+
+  {
+    timestamps: true,
+  }
+);
 // To convert noteSchema into a model of 'Note'.
 const noteModel = mongoose.model("Note", noteSchema); 
 module.exports = noteModel;

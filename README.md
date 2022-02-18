@@ -12,4 +12,4 @@
 
 ## Postman Documentation
 
-[Nota Bene App](https://www.postman.com/satellite-cosmonaut-94966329/workspace/nba)
+[Nota Bene App](https://documenter.getpostman.com/view/19291153/UVkiUKGW)
