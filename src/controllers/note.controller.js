@@ -1,4 +1,6 @@
-const Note = require("../models/note.model");
+/** @format */
+
+const Note = require('../models/note.model');
 
 // To create a new note using 'title' & 'description'
 exports.createNote = async (req, res, next) => {
@@ -6,7 +8,7 @@ exports.createNote = async (req, res, next) => {
     const { title, description } = req.body;
     if (!title || !description) {
       return res.status(404).json({
-        message: "Note not Found! Fill in the required fields",
+        message: 'Note not Found! Fill in the required fields',
       });
     }
     const newNote = await Note.create({
@@ -15,7 +17,7 @@ exports.createNote = async (req, res, next) => {
     });
 
     return res.status(201).json({
-      message: "Note Created Successfully",
+      message: 'Note Created Successfully',
       newNote,
     });
   } catch (error) {
@@ -33,11 +35,11 @@ exports.deleteNote = async (req, res, next) => {
     const removeNote = await Note.findOneAndDelete({ _id: id });
     if (!removeNote) {
       return res.status(404).json({
-        message: "Note not found! Fill in the required details",
+        message: 'Note not found! Fill in the required details',
       });
     }
     return res.status(200).json({
-      message: "Note Deleted Successfully",
+      message: 'Note Deleted Successfully',
       removeNote,
     });
   } catch (error) {
@@ -58,11 +60,11 @@ exports.updateNote = async (req, res, next) => {
     });
     if (!noteUpdate) {
       return res.status(404).json({
-        message: "Note not found! Fill in the required details",
+        message: 'Note not found! Fill in the required details',
       });
     }
     return res.status(200).json({
-      message: "Note Updated Successfully",
+      message: 'Note Updated Successfully',
       noteUpdate,
     });
   } catch (error) {
@@ -77,7 +79,7 @@ exports.fetchNotes = async (req, res, next) => {
   try {
     const allNote = await Note.find();
     return res.status(200).json({
-      message: "All Note view Successfully",
+      message: 'All Note view Successfully',
       allNote,
     });
   } catch (error) {
@@ -94,14 +96,11 @@ exports.fetchTitleNote = async (req, res, next) => {
     const { title } = req.params;
 
     const findNoteTitle = await Note.find({ title: title });
-    // if (!findNoteTitle) {
-    //   return res.status(404).json({
-    //     message: "Note not Found! Fill in the required details",
-    //   });
-    // }
+    if (!findNoteTitle) {
+      throw new Error('Note not Found! Fill in the required details');
+    }
     return res.status(200).json({
-      message: "A Note view Successfully ",
-      findNoteTitle,
+      message: 'A Note view Successfully',
     });
   } catch (error) {
     return res.status(500).json({

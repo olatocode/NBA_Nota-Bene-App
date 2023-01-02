@@ -2,6 +2,7 @@
   "dependencies": {
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
+    "express-mongo-sanitize": "^2.2.0",
     "i": "^0.3.7",
     "init": "^0.1.2",
     "mongoose": "6.1.8",
